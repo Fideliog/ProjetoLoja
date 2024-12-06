@@ -1,0 +1,13 @@
+create database Lojban;
+
+use Lojban;
+
+create table Produtos(
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  NomeProd varchar(50) not null,
+  VendTel varchar(15) not null,
+  preco varchar(6) not null,
+  OndEcon varchar(120),
+  Tipo varchar(20) not null,
+  Disponivel varchar(4)
+  );
