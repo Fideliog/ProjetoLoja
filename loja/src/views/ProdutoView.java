@@ -8,34 +8,38 @@ import java.awt.*;
 import java.util.List;
 
 public class ProdutoView extends JFrame {
-    private JTable table;
-    private DefaultTableModel tableModel;
+    private JTable table; // Tabela para exibir os produtos
+    private DefaultTableModel tableModel; // Modelo da tabela
 
+    // Construtor da janela principal
     public ProdutoView() {
-        super("Vitrine de Produtos");
-        initializeComponents();
+        super("Vitrine de Produtos"); // Define o título da janela
+        initializeComponents(); // Inicializa os componentes da interface
     }
 
-private void initializeComponents() {
-        String[] columnNames = {"ID", "Nome", "Telefone", "Preço","Onde encontrar","Tipo","Disponivél?"};
-        tableModel = new DefaultTableModel (columnNames, 0);
-        table = new JTable(tableModel);
-        JScrollPane scrollPane = new JScrollPane(table);
+    private void initializeComponents() {
+        String[] columnNames = { // Define os nomes das colunas
+            "ID", "Nome", "Telefone", "Preço", "Onde encontrar", "Tipo", "Disponível?"
+        };
+        tableModel = new DefaultTableModel(columnNames, 0); // Cria o modelo da tabela
+        table = new JTable(tableModel); // Cria a tabela com o modelo
+        JScrollPane scrollPane = new JScrollPane(table); 
 
         scrollPane.setBorder(
-            BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            BorderFactory.createEmptyBorder(10, 10, 10, 10) // Define margens ao redor da tabela
+        );
 
-        this.setLayout(new BorderLayout());
-        this.add(scrollPane, BorderLayout.CENTER);
+        this.setLayout(new BorderLayout()); // Define o layout da janela
+        this.add(scrollPane, BorderLayout.CENTER); // Adiciona o painel de rolagem ao centro
 
-        this.setSize(600, 400);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        this.setSize(600, 400); // Define o tamanho da janela
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha a aplicação ao fechar a janela
+        this.setLocationRelativeTo(null); // Centraliza a janela na tela
     }
 
-public void atualizarTabela (List<Produto> produtos) { 
-        tableModel.setRowCount(0); // Limpa a tabela
-        for (Produto produto : produtos) {
+    public void atualizarTabela(List<Produto> produtos) { 
+        tableModel.setRowCount(0); // Limpa todas as linhas existentes
+        for (Produto produto : produtos) { // Adiciona cada produto como uma nova linha
             Object[] row = {
                 produto.getId(),
                 produto.getNome(),
@@ -45,15 +49,16 @@ public void atualizarTabela (List<Produto> produtos) {
                 produto.getTipo(),
                 produto.getDis()
             };
-            tableModel.addRow(row);
+            tableModel.addRow(row); 
         }
     }
 
-public int getSelectedProdutoId() {
-        int selectedRow = table.getSelectedRow();
-        if (selectedRow != -1) {
-            return (int) tableModel.getValueAt(selectedRow, 0);
+    // Obtém o ID do produto selecionado na tabela
+    public int getSelectedProdutoId() {
+        int selectedRow = table.getSelectedRow(); // Obtém a linha selecionada
+        if (selectedRow != -1) { // Verifica se há uma linha selecionada
+            return (int) tableModel.getValueAt(selectedRow, 0); // Retorna o ID da linha selecionada
         }
-        return -1;
+        return -1; // Retorna -1 se nenhuma linha estiver selecionada
     }
 }
