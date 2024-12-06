@@ -1,6 +1,7 @@
 package models;
 
 public class Produto {
+    // Atributos da classe Produto
     private int id;
     private String NomeProd;
     private String Tipo;
@@ -9,13 +10,12 @@ public class Produto {
     private String OndEcon;
     private String Disponivel;
 
-
-    //Construtores
-
+    // Construtor padrão
     public Produto() {
     }
 
-    public Produto(String NomeProd, String VendTel, String preco, String OndEcon, String Tipo, String Disponivel ) {
+    // Construtor sem ID (para novos produtos)
+    public Produto(String NomeProd, String VendTel, String preco, String OndEcon, String Tipo, String Disponivel) {
         this.NomeProd = NomeProd;
         this.VendTel = VendTel;
         this.preco = preco;
@@ -24,7 +24,8 @@ public class Produto {
         this.Disponivel = Disponivel;
     }
 
-    public Produto(int id, String NomeProd, String VendTel, String preco, String OndEcon, String Tipo, String Disponivel ) {
+    // Construtor completo com ID (para produtos existentes)
+    public Produto(int id, String NomeProd, String VendTel, String preco, String OndEcon, String Tipo, String Disponivel) {
         this.id = id;
         this.NomeProd = NomeProd;
         this.VendTel = VendTel;
@@ -34,7 +35,7 @@ public class Produto {
         this.Disponivel = Disponivel;
     }
 
-    // Getters e Setters
+    // Getters e Setters para acesso e modificação dos atributos
 
     public int getId() {
         return id;
@@ -88,10 +89,9 @@ public class Produto {
         this.OndEcon = OndEcon;
     }
 
-    //toString
-
+    // Representação textual do objeto Produto
     @Override
     public String toString() {
-        return "Produto [id=" + id +", NomeProd=" + NomeProd + ", VendTel=" + VendTel +", preco=" + preco + ",  OndEcon=" + OndEcon +", Tipo=" + Tipo + ", Disponivel=" + Disponivel +"]";
+        return "Produto [id=" + id + ", NomeProd=" + NomeProd + ", VendTel=" + VendTel + ", preco=" + preco+ ", OndEcon=" + OndEcon + ", Tipo=" + Tipo + ", Disponivel=" + Disponivel + "]";
     }
 }
